@@ -1,0 +1,221 @@
+/* York Gardens TTC club site. Colours are taken from the hall itself:
+   the navy YG TTC barriers, the green Donic tables and the parquet floor. */
+:root {
+  --navy: #1f2c6e;
+  --navy-deep: #18225a;
+  --green: #1e5b52;
+  --parquet: #b7823f;
+  --ink: #1a1f33;
+  --muted: #565d73;
+  --line: #e2e4eb;
+  --paper: #ffffff;
+  --wash: #f2f4f8;
+  --serif: 'Newsreader', Georgia, serif;
+  --sans: 'Instrument Sans', system-ui, 'Segoe UI', sans-serif;
+  --radius: 6px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 1.0625rem/1.6 var(--sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--parquet); outline-offset: 3px; }
+
+h1, h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+h2 { font-size: clamp(2rem, 4vw, 2.75rem); margin-bottom: 1.5rem; }
+
+.skip {
+  position: absolute; left: 1rem; top: -3rem; z-index: 10;
+  background: var(--paper); padding: 0.5rem 1rem; border-radius: var(--radius);
+}
+.skip:focus { top: 1rem; }
+
+.wrap { max-width: 72rem; margin: 0 auto; padding: 0 1.25rem; }
+
+/* Buttons */
+.actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+.btn {
+  display: inline-block;
+  padding: 0.7rem 1.25rem;
+  border-radius: var(--radius);
+  border: 1.5px solid transparent;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: background-color 0.15s, color 0.15s;
+}
+.btn-light { background: var(--paper); color: var(--navy); }
+.btn-light:hover { background: #e4e8f5; }
+.btn-outline { border-color: rgb(255 255 255 / 0.6); color: var(--paper); }
+.btn-outline:hover { background: rgb(255 255 255 / 0.1); }
+.btn-navy { background: var(--navy); color: var(--paper); }
+.btn-navy:hover { background: var(--navy-deep); }
+.btn-ghost { border-color: var(--line); background: var(--paper); color: var(--navy); }
+.btn-ghost:hover { border-color: var(--navy); }
+
+/* Hero: navy panel with serif lettering, like the club's barriers, beside the
+   overhead shot of the hall. Stacks photo-first on small screens. */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  background: var(--navy);
+  color: var(--paper);
+}
+.nav {
+  display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+  padding: 1.1rem 1.25rem;
+  grid-row: 1;
+}
+.wordmark {
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  text-decoration: none;
+  margin: 0;
+}
+.nav ul { display: flex; gap: 1.25rem; list-style: none; margin: 0; padding: 0; }
+.nav ul a { text-decoration: none; font-weight: 500; font-size: 0.95rem; opacity: 0.85; }
+.nav ul a:hover { opacity: 1; text-decoration: underline; text-underline-offset: 4px; }
+
+.hero-photo {
+  grid-row: 2;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center 45%;
+}
+.hero-text { grid-row: 3; padding: 2.5rem 1.25rem 3rem; }
+.hero-text h1 { font-size: clamp(2.5rem, 7vw, 4.5rem); max-width: 12ch; }
+.hero-text p {
+  margin: 1.5rem 0 2rem;
+  max-width: 34rem;
+  font-size: 1.125rem;
+  color: rgb(255 255 255 / 0.85);
+}
+
+@media (min-width: 56rem) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+    min-height: min(92vh, 56rem);
+  }
+  .nav { grid-column: 1; padding: 1.5rem clamp(1.5rem, 5vw, 4rem); }
+  .hero-text {
+    grid-column: 1; grid-row: 2;
+    align-self: center;
+    padding: 2rem clamp(1.5rem, 5vw, 4rem) 4rem;
+  }
+  .hero-photo {
+    grid-column: 2; grid-row: 1 / span 2;
+    height: 100%;
+    aspect-ratio: auto;
+  }
+}
+
+/* Sections */
+.section { padding: clamp(3.5rem, 8vw, 6rem) 0; }
+.section-wash { background: var(--wash); }
+
+.banner { margin: 0 0 clamp(2.5rem, 6vw, 4rem); }
+.banner img { width: 100%; border-radius: var(--radius); }
+
+.about { display: grid; gap: 0 3rem; }
+.founder { margin: 0 0 2rem; max-width: 16rem; }
+.founder img { width: 100%; border-radius: var(--radius); }
+.founder figcaption { margin-top: 0.6rem; font-size: 0.95rem; color: var(--muted); }
+.prose { max-width: 38rem; }
+.prose p { margin: 0 0 1.1rem; }
+.prose p:last-child { margin-bottom: 0; }
+@media (min-width: 56rem) {
+  .about { grid-template-columns: 1fr 2fr; }
+}
+
+/* Wins: photos share one row height whatever their shape (flex-grow by aspect ratio). */
+.wins { display: flex; flex-direction: column; gap: 1rem; }
+.wins figure { margin: 0; }
+.wins img { width: 100%; border-radius: var(--radius); }
+.wins figcaption { margin-top: 0.6rem; font-size: 0.95rem; color: var(--muted); }
+@media (min-width: 40rem) {
+  .wins { flex-direction: row; }
+  .wins figure { flex: var(--ar) 1 0; }
+}
+
+/* Gallery: masonry columns so portrait and landscape shots keep their shape. */
+.gallery { columns: 2; column-gap: 0.75rem; list-style: none; margin: 0; padding: 0; }
+.gallery li { break-inside: avoid; margin-bottom: 0.75rem; }
+.gallery button {
+  display: block; width: 100%; padding: 0; border: 0; background: none;
+  cursor: zoom-in; border-radius: var(--radius); overflow: hidden;
+}
+.gallery img { width: 100%; transition: opacity 0.2s; }
+.gallery button:hover img { opacity: 0.88; }
+@media (min-width: 56rem) { .gallery { columns: 3; } }
+
+/* Visit */
+.visit { display: grid; gap: 2.5rem; }
+.lead { margin: -0.5rem 0 1.75rem; font-size: 1.15rem; }
+.facts { margin: 0 0 2rem; }
+.facts div {
+  display: grid; grid-template-columns: 7rem 1fr; gap: 1rem;
+  padding: 0.9rem 0; border-top: 1px solid var(--line);
+}
+.facts div:last-child { border-bottom: 1px solid var(--line); }
+.facts dt { font-weight: 600; color: var(--green); }
+.facts dd { margin: 0; }
+.facts a { color: var(--navy); font-weight: 600; }
+.map { min-height: 20rem; }
+.map iframe {
+  width: 100%; height: 100%; min-height: 20rem;
+  border: 0; border-radius: var(--radius);
+}
+@media (min-width: 56rem) {
+  .visit { grid-template-columns: 1fr 1fr; gap: 4rem; align-items: stretch; }
+}
+
+/* Footer */
+.footer { background: var(--navy); color: rgb(255 255 255 / 0.8); padding: 3rem 0; font-size: 0.95rem; }
+.footer .wordmark { color: var(--paper); margin-bottom: 0.5rem; }
+.footer p { margin: 0 0 0.35rem; }
+
+/* Lightbox */
+.lightbox {
+  border: 0; padding: 0; background: transparent;
+  max-width: 100vw; max-height: 100vh; width: 100vw; height: 100vh;
+}
+.lightbox::backdrop { background: rgb(10 14 35 / 0.92); }
+.lightbox figure {
+  margin: 0; height: 100%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 3.5rem 1rem 1.5rem;
+  pointer-events: none;
+}
+.lightbox img { max-height: calc(100vh - 7rem); width: auto; border-radius: var(--radius); pointer-events: auto; }
+.lightbox figcaption { color: rgb(255 255 255 / 0.85); margin-top: 0.75rem; text-align: center; max-width: 40rem; }
+.lightbox button {
+  position: fixed;
+  background: rgb(255 255 255 / 0.12); color: var(--paper);
+  border: 0; border-radius: 999px;
+  width: 3rem; height: 3rem; font-size: 2rem; line-height: 1;
+  cursor: pointer;
+}
+.lightbox button:hover { background: rgb(255 255 255 / 0.25); }
+.lb-close { top: 1rem; right: 1rem; }
+.lb-prev { left: 1rem; top: 50%; transform: translateY(-50%); }
+.lb-next { right: 1rem; top: 50%; transform: translateY(-50%); }

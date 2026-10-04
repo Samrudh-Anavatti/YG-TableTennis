@@ -4,12 +4,171 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>York Gardens Table Tennis Club</title>
-  <!-- Placeholder until the club's front page is built: send visitors to the rankings. -->
-  <meta http-equiv="refresh" content="0; url=/rankings/" />
-  <link rel="canonical" href="/rankings/" />
+  <meta name="description" content="Friendly table tennis club in Tooting Bec, London, since 1968. Club nights Monday, Wednesday and Friday, 7–11pm at Fircroft Primary School. All levels welcome, £7 a session." />
+  <meta property="og:title" content="York Gardens Table Tennis Club" />
+  <meta property="og:description" content="Table tennis in Tooting Bec since 1968. Mon, Wed & Fri, 7–11pm. All levels welcome." />
+  <meta property="og:image" content="https://yg-tabletennis.uk/photos/hall-overhead.jpg" />
+  <meta property="og:url" content="https://yg-tabletennis.uk/" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%231F2C6E'/%3E%3Ccircle cx='50' cy='50' r='22' fill='%23fff'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
-<body style="font-family: system-ui, sans-serif; text-align: center; padding: 3rem 1rem;">
-  <h1>York Gardens Table Tennis Club</h1>
-  <p><a href="/rankings/">Go to the club rankings →</a></p>
+<body>
+  <a class="skip" href="#about">Skip to content</a>
+
+  <header class="hero">
+    <nav class="nav" aria-label="Main">
+      <a class="wordmark" href="/">York Gardens TTC</a>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#photos">Photos</a></li>
+        <li><a href="#visit">Visit</a></li>
+        <li><a href="/rankings/">Rankings</a></li>
+      </ul>
+    </nav>
+
+    <div class="hero-text">
+      <h1>York Gardens Table Tennis Club</h1>
+      <p>Table tennis in Tooting Bec since 1968. Club nights every Monday, Wednesday and Friday from 7 to 11pm, and everyone is welcome, whatever your level.</p>
+      <div class="actions">
+        <a class="btn btn-light" href="#visit">Find us</a>
+        <a class="btn btn-outline" href="/rankings/">Club rankings</a>
+      </div>
+    </div>
+
+    <img class="hero-photo" src="photos/hall-overhead.jpg" width="1200" height="1600" fetchpriority="high"
+      alt="The hall at Fircroft seen from the balcony: a long row of green tables, players mid-rally, and blue YG TTC barriers." />
+  </header>
+
+  <main>
+    <section id="about" class="section">
+      <div class="wrap">
+        <figure class="banner">
+          <img src="photos/club-group-close.jpg" width="1140" height="520" loading="lazy"
+            alt="Around thirty club members gathered round a table, smiling, with balloons on the net." />
+        </figure>
+
+        <div class="about">
+          <div>
+            <h2>Our story</h2>
+            <figure class="founder">
+              <img src="photos/tom-draper.jpg" width="500" height="739" loading="lazy"
+                alt="Tom Draper, the club's founder, in a York Gardens club shirt, enjoying a slice of cake." />
+              <figcaption>Tom Draper, who founded the club in 1968</figcaption>
+            </figure>
+          </div>
+          <div class="prose">
+            <p>York Gardens TTC began in 1968, when Tom Draper founded Old Chesterton TTC in Battersea. Tom coached and ran the club right up to his mid-80s.</p>
+            <p>In the mid-1980s the club moved to the York Gardens community centre and took its name. A few moves later it settled at Fircroft Primary School in Tooting Bec, where we play today.</p>
+            <p>We now have over 160 members, from first-timers to league players, and two teams in the Sutton League this season.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-wash" aria-labelledby="wins-title">
+      <div class="wrap">
+        <h2 id="wins-title">We win things too</h2>
+        <div class="wins">
+          <figure style="--ar: 1.778">
+            <img src="photos/tte-tournament.jpg" width="1600" height="900" loading="lazy"
+              alt="A York Gardens player holding a certificate on the podium at a Table Tennis England tournament." />
+            <figcaption>Table Tennis England tournament</figcaption>
+          </figure>
+          <figure style="--ar: 0.77">
+            <img src="photos/wandsworth-ims.jpg" width="1232" height="1600" loading="lazy"
+              alt="Three York Gardens players with winners' medals, giving a thumbs up." />
+            <figcaption>Wandsworth IMS champions</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="photos" class="section">
+      <div class="wrap">
+        <h2>Club nights</h2>
+        <ul class="gallery">
+          <li><button type="button"><img src="photos/rally-1.jpg" width="1200" height="1600" loading="lazy" alt="A forehand mid-rally at Fircroft." /></button></li>
+          <li><button type="button"><img src="photos/cake-1.jpg" width="1600" height="739" loading="lazy" alt="Tom Draper, our founder (right), sharing chocolate cake with a fellow member." /></button></li>
+          <li><button type="button"><img src="photos/club-group.jpg" width="1600" height="1200" loading="lazy" alt="The whole club gathered round the tables." /></button></li>
+          <li><button type="button"><img src="photos/world-champs-2026.jpg" width="1600" height="1200" loading="lazy" alt="Members in the stands at the ITTF World Team Championships, London 2026." /></button></li>
+          <li><button type="button"><img src="photos/rally-2.jpg" width="1200" height="1600" loading="lazy" alt="A player crouched, waiting for the serve." /></button></li>
+          <li><button type="button"><img src="photos/cake-2.jpg" width="739" height="1600" loading="lazy" alt="Two members smiling with cake after a session." /></button></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="visit" class="section section-wash">
+      <div class="wrap visit">
+        <div>
+          <h2>Come and play</h2>
+          <p class="lead">Just turn up, there's no need to book.</p>
+          <dl class="facts">
+            <div><dt>When</dt><dd>Monday, Wednesday and Friday<br />7pm to 11pm</dd></div>
+            <div><dt>Cost</dt><dd>£7 per session</dd></div>
+            <div><dt>Kit</dt><dd>Bring your own bat and balls. No kit yet? Get in touch with Mike before you come.</dd></div>
+            <div><dt>Where</dt><dd>Fircroft Primary School<br />Fircroft Road, Tooting Bec<br />London SW17 7PP</dd></div>
+            <div><dt>Questions</dt><dd>Call or text Mike Noble, our club president, on <a href="tel:+447957300374">07957&nbsp;300374</a></dd></div>
+          </dl>
+          <div class="actions">
+            <a class="btn btn-navy" href="tel:+447957300374">Call Mike</a>
+            <a class="btn btn-ghost" href="sms:+447957300374">Text Mike</a>
+            <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Fircroft+Primary+School+SW17+7PP" target="_blank" rel="noopener">Open in Google Maps</a>
+          </div>
+        </div>
+        <div class="map">
+          <iframe title="Map showing Fircroft Primary School, SW17 7PP" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=Fircroft+Primary+School,+Fircroft+Road,+London+SW17+7PP&amp;output=embed"></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <p class="wordmark">York Gardens TTC</p>
+      <p>Founded 1968 as Old Chesterton TTC. Fircroft Primary School, London SW17 7PP.</p>
+      <p><a href="/rankings/">Club rankings</a></p>
+    </div>
+  </footer>
+
+  <dialog class="lightbox" aria-label="Photo viewer">
+    <figure>
+      <img alt="" />
+      <figcaption></figcaption>
+    </figure>
+    <button type="button" class="lb-close" aria-label="Close">&times;</button>
+    <button type="button" class="lb-prev" aria-label="Previous photo">&lsaquo;</button>
+    <button type="button" class="lb-next" aria-label="Next photo">&rsaquo;</button>
+  </dialog>
+
+  <script>
+    // Gallery lightbox: click a photo to view it full size; arrow keys / buttons step through.
+    const dialog = document.querySelector('.lightbox')
+    const big = dialog.querySelector('img')
+    const caption = dialog.querySelector('figcaption')
+    const photos = [...document.querySelectorAll('.gallery img')]
+    let current = 0
+
+    function show(i) {
+      current = (i + photos.length) % photos.length
+      big.src = photos[current].src
+      big.alt = photos[current].alt
+      caption.textContent = photos[current].alt
+    }
+
+    photos.forEach((img, i) =>
+      img.closest('button').addEventListener('click', () => { show(i); dialog.showModal() }))
+    dialog.querySelector('.lb-close').addEventListener('click', () => dialog.close())
+    dialog.querySelector('.lb-prev').addEventListener('click', () => show(current - 1))
+    dialog.querySelector('.lb-next').addEventListener('click', () => show(current + 1))
+    dialog.addEventListener('click', (e) => { if (e.target === dialog) dialog.close() })
+    dialog.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') show(current - 1)
+      if (e.key === 'ArrowRight') show(current + 1)
+    })
+  </script>
 </body>
 </html>
