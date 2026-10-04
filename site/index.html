@@ -51,56 +51,41 @@
         </figure>
 
         <div class="about">
-          <div>
-            <h2>Our story</h2>
-            <figure class="founder">
-              <img src="photos/tom-draper.jpg" width="500" height="739" loading="lazy"
-                alt="Tom Draper, the club's founder, in a York Gardens club shirt, enjoying a slice of cake." />
-              <figcaption>Tom Draper, who founded the club in 1968</figcaption>
-            </figure>
-          </div>
           <div class="prose">
+            <h2>Our story</h2>
             <p>York Gardens TTC began in 1968, when Tom Draper founded Old Chesterton TTC in Battersea. Tom coached and ran the club right up to his mid-80s.</p>
             <p>In the mid-1980s the club moved to the York Gardens community centre and took its name. A few moves later it settled at Fircroft Primary School in Tooting Bec, where we play today.</p>
-            <p>We now have over 160 members, from first-timers to league players, and two teams in the Sutton League this season.</p>
+            <p>We now have over 160 members, from first-timers to league players, and two teams in the Sutton League this season. Mike Noble is our current club president.</p>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-wash" aria-labelledby="wins-title">
-      <div class="wrap">
-        <h2 id="wins-title">We win things too</h2>
-        <div class="wins">
-          <figure style="--ar: 1.778">
-            <img src="photos/tte-tournament.jpg" width="1600" height="900" loading="lazy"
-              alt="A York Gardens player holding a certificate on the podium at a Table Tennis England tournament." />
-            <figcaption>Table Tennis England tournament</figcaption>
-          </figure>
-          <figure style="--ar: 0.77">
-            <img src="photos/wandsworth-ims.jpg" width="1232" height="1600" loading="lazy"
-              alt="Three York Gardens players with winners' medals, giving a thumbs up." />
-            <figcaption>Wandsworth IMS champions</figcaption>
+          <figure class="founder">
+            <img src="photos/cake-1.jpg" width="1600" height="739" loading="lazy"
+              alt="Tom Draper, in a York Gardens club shirt, sharing chocolate cake with a fellow member." />
+            <figcaption>Tom Draper (right), who founded the club in 1968</figcaption>
           </figure>
         </div>
       </div>
     </section>
 
-    <section id="photos" class="section">
-      <div class="wrap">
+    <section id="photos" class="section section-wash">
+      <div class="wrap strip-head">
         <h2>Club nights</h2>
-        <ul class="gallery">
-          <li><button type="button"><img src="photos/rally-1.jpg" width="1200" height="1600" loading="lazy" alt="A forehand mid-rally at Fircroft." /></button></li>
-          <li><button type="button"><img src="photos/cake-1.jpg" width="1600" height="739" loading="lazy" alt="Tom Draper, our founder (right), sharing chocolate cake with a fellow member." /></button></li>
-          <li><button type="button"><img src="photos/club-group.jpg" width="1600" height="1200" loading="lazy" alt="The whole club gathered round the tables." /></button></li>
-          <li><button type="button"><img src="photos/world-champs-2026.jpg" width="1600" height="1200" loading="lazy" alt="Members in the stands at the ITTF World Team Championships, London 2026." /></button></li>
-          <li><button type="button"><img src="photos/rally-2.jpg" width="1200" height="1600" loading="lazy" alt="A player crouched, waiting for the serve." /></button></li>
-          <li><button type="button"><img src="photos/cake-2.jpg" width="739" height="1600" loading="lazy" alt="Two members smiling with cake after a session." /></button></li>
-        </ul>
+        <div class="strip-nav">
+          <button type="button" class="strip-prev" aria-label="Previous photo">&lsaquo;</button>
+          <button type="button" class="strip-next" aria-label="Next photo">&rsaquo;</button>
+        </div>
+      </div>
+      <div class="strip" tabindex="0" role="region" aria-label="Club photos">
+        <img src="photos/rally-1.jpg" width="1200" height="1600" loading="lazy" alt="A forehand mid-rally at Fircroft." />
+        <img src="photos/club-group.jpg" width="1600" height="1200" loading="lazy" alt="The whole club gathered round the tables." />
+        <img src="photos/wandsworth-ims.jpg" width="1232" height="1600" loading="lazy" alt="Three York Gardens players with their Wandsworth IMS winners' medals." />
+        <img src="photos/world-champs-2026.jpg" width="1600" height="1200" loading="lazy" alt="Members in the stands at the ITTF World Team Championships, London 2026." />
+        <img src="photos/cake-2.jpg" width="739" height="1600" loading="lazy" alt="Two members smiling with cake after a session." />
+        <img src="photos/tte-tournament.jpg" width="1600" height="900" loading="lazy" alt="A York Gardens player on the podium at a Table Tennis England tournament." />
+        <img src="photos/rally-2.jpg" width="1200" height="1600" loading="lazy" alt="A player crouched, waiting for the serve." />
       </div>
     </section>
 
-    <section id="visit" class="section section-wash">
+    <section id="visit" class="section">
       <div class="wrap visit">
         <div>
           <h2>Come and play</h2>
@@ -134,41 +119,45 @@
     </div>
   </footer>
 
-  <dialog class="lightbox" aria-label="Photo viewer">
-    <figure>
-      <img alt="" />
-      <figcaption></figcaption>
-    </figure>
-    <button type="button" class="lb-close" aria-label="Close">&times;</button>
-    <button type="button" class="lb-prev" aria-label="Previous photo">&lsaquo;</button>
-    <button type="button" class="lb-next" aria-label="Next photo">&rsaquo;</button>
-  </dialog>
-
   <script>
-    // Gallery lightbox: click a photo to view it full size; arrow keys / buttons step through.
-    const dialog = document.querySelector('.lightbox')
-    const big = dialog.querySelector('img')
-    const caption = dialog.querySelector('figcaption')
-    const photos = [...document.querySelectorAll('.gallery img')]
-    let current = 0
+    // Club nights strip: steps one photo along every few seconds, looping at the end.
+    // Pauses while hovered, focused or off-screen, and never auto-moves for reduced motion.
+    const strip = document.querySelector('.strip')
+    const slides = [...strip.children]
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches
+    const behavior = reduce ? 'auto' : 'smooth'
 
-    function show(i) {
-      current = (i + photos.length) % photos.length
-      big.src = photos[current].src
-      big.alt = photos[current].alt
-      caption.textContent = photos[current].alt
+    function step(dir) {
+      const pad = parseFloat(getComputedStyle(strip).paddingLeft)
+      const x = strip.scrollLeft
+      const atEnd = x >= strip.scrollWidth - strip.clientWidth - 4
+      let target
+      if (dir > 0) {
+        target = atEnd ? slides[0] : slides.find((s) => s.offsetLeft - pad > x + 4)
+      } else {
+        target = x <= 4 ? slides[slides.length - 1] : slides.findLast((s) => s.offsetLeft - pad < x - 4)
+      }
+      if (target) strip.scrollTo({ left: target.offsetLeft - pad, behavior })
     }
 
-    photos.forEach((img, i) =>
-      img.closest('button').addEventListener('click', () => { show(i); dialog.showModal() }))
-    dialog.querySelector('.lb-close').addEventListener('click', () => dialog.close())
-    dialog.querySelector('.lb-prev').addEventListener('click', () => show(current - 1))
-    dialog.querySelector('.lb-next').addEventListener('click', () => show(current + 1))
-    dialog.addEventListener('click', (e) => { if (e.target === dialog) dialog.close() })
-    dialog.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowLeft') show(current - 1)
-      if (e.key === 'ArrowRight') show(current + 1)
-    })
+    document.querySelector('.strip-prev').addEventListener('click', () => step(-1))
+    document.querySelector('.strip-next').addEventListener('click', () => step(1))
+
+    let paused = false
+    let visible = false
+    const section = document.getElementById('photos')
+    section.addEventListener('mouseenter', () => (paused = true))
+    section.addEventListener('mouseleave', () => (paused = false))
+    section.addEventListener('focusin', () => (paused = true))
+    section.addEventListener('focusout', () => (paused = false))
+    let touchedAt = 0 // a swipe holds the strip still for a few seconds
+    strip.addEventListener('touchstart', () => (touchedAt = Date.now()), { passive: true })
+    new IntersectionObserver(([e]) => (visible = e.isIntersecting)).observe(strip)
+    if (!reduce) {
+      setInterval(() => {
+        if (!paused && visible && !document.hidden && Date.now() - touchedAt > 6000) step(1)
+      }, 3500)
+    }
   </script>
 </body>
 </html>

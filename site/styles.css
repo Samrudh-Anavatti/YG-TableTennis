@@ -136,37 +136,44 @@ h2 { font-size: clamp(2rem, 4vw, 2.75rem); margin-bottom: 1.5rem; }
 .banner { margin: 0 0 clamp(2.5rem, 6vw, 4rem); }
 .banner img { width: 100%; border-radius: var(--radius); }
 
-.about { display: grid; gap: 0 3rem; }
-.founder { margin: 0 0 2rem; max-width: 16rem; }
+.about { display: grid; gap: 2.5rem; }
+.founder { margin: 0; }
 .founder img { width: 100%; border-radius: var(--radius); }
 .founder figcaption { margin-top: 0.6rem; font-size: 0.95rem; color: var(--muted); }
 .prose { max-width: 38rem; }
 .prose p { margin: 0 0 1.1rem; }
 .prose p:last-child { margin-bottom: 0; }
 @media (min-width: 56rem) {
-  .about { grid-template-columns: 1fr 2fr; }
+  .about { grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
 }
 
-/* Wins: photos share one row height whatever their shape (flex-grow by aspect ratio). */
-.wins { display: flex; flex-direction: column; gap: 1rem; }
-.wins figure { margin: 0; }
-.wins img { width: 100%; border-radius: var(--radius); }
-.wins figcaption { margin-top: 0.6rem; font-size: 0.95rem; color: var(--muted); }
-@media (min-width: 40rem) {
-  .wins { flex-direction: row; }
-  .wins figure { flex: var(--ar) 1 0; }
+/* Club nights strip: one row of photos at a fixed height, each keeping its own
+   shape. Starts in line with the page content and bleeds off the right edge. */
+.strip-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; }
+.strip-nav { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; }
+.strip-nav button {
+  width: 2.75rem; height: 2.75rem; border-radius: 999px;
+  border: 1.5px solid var(--line); background: var(--paper); color: var(--navy);
+  font-size: 1.6rem; line-height: 1; cursor: pointer;
 }
-
-/* Gallery: masonry columns so portrait and landscape shots keep their shape. */
-.gallery { columns: 2; column-gap: 0.75rem; list-style: none; margin: 0; padding: 0; }
-.gallery li { break-inside: avoid; margin-bottom: 0.75rem; }
-.gallery button {
-  display: block; width: 100%; padding: 0; border: 0; background: none;
-  cursor: zoom-in; border-radius: var(--radius); overflow: hidden;
+.strip-nav button:hover { border-color: var(--navy); }
+.strip {
+  --edge: max(1.25rem, calc((100vw - 72rem) / 2 + 1.25rem));
+  position: relative;
+  display: flex; gap: 0.75rem;
+  height: clamp(15rem, 30vw, 22rem);
+  padding: 0 var(--edge);
+  scroll-padding-inline: var(--edge);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
 }
-.gallery img { width: 100%; transition: opacity 0.2s; }
-.gallery button:hover img { opacity: 0.88; }
-@media (min-width: 56rem) { .gallery { columns: 3; } }
+.strip::-webkit-scrollbar { display: none; }
+.strip img {
+  flex: none; height: 100%; width: auto;
+  border-radius: var(--radius);
+  scroll-snap-align: start;
+}
 
 /* Visit */
 .visit { display: grid; gap: 2.5rem; }
@@ -193,29 +200,3 @@ h2 { font-size: clamp(2rem, 4vw, 2.75rem); margin-bottom: 1.5rem; }
 .footer { background: var(--navy); color: rgb(255 255 255 / 0.8); padding: 3rem 0; font-size: 0.95rem; }
 .footer .wordmark { color: var(--paper); margin-bottom: 0.5rem; }
 .footer p { margin: 0 0 0.35rem; }
-
-/* Lightbox */
-.lightbox {
-  border: 0; padding: 0; background: transparent;
-  max-width: 100vw; max-height: 100vh; width: 100vw; height: 100vh;
-}
-.lightbox::backdrop { background: rgb(10 14 35 / 0.92); }
-.lightbox figure {
-  margin: 0; height: 100%;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  padding: 3.5rem 1rem 1.5rem;
-  pointer-events: none;
-}
-.lightbox img { max-height: calc(100vh - 7rem); width: auto; border-radius: var(--radius); pointer-events: auto; }
-.lightbox figcaption { color: rgb(255 255 255 / 0.85); margin-top: 0.75rem; text-align: center; max-width: 40rem; }
-.lightbox button {
-  position: fixed;
-  background: rgb(255 255 255 / 0.12); color: var(--paper);
-  border: 0; border-radius: 999px;
-  width: 3rem; height: 3rem; font-size: 2rem; line-height: 1;
-  cursor: pointer;
-}
-.lightbox button:hover { background: rgb(255 255 255 / 0.25); }
-.lb-close { top: 1rem; right: 1rem; }
-.lb-prev { left: 1rem; top: 50%; transform: translateY(-50%); }
-.lb-next { right: 1rem; top: 50%; transform: translateY(-50%); }
