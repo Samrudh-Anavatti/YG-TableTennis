@@ -173,6 +173,21 @@ h2 { font-size: clamp(2rem, 4vw, 2.75rem); margin-bottom: 1.5rem; }
   scroll-snap-align: start;
 }
 
+/* Coaching: the note on the left, the two coaches side by side on the right. */
+.coaching { display: grid; gap: 2.5rem; }
+.kids { padding-left: 1rem; border-left: 3px solid var(--parquet); }
+.kids strong { color: var(--green); }
+.coaches {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  list-style: none; margin: 0; padding: 0;
+}
+.coaches img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radius); }
+.coaches p { margin: 0.75rem 0 0; font-size: 0.95rem; color: var(--muted); }
+.coaches strong { display: block; color: var(--ink); font-size: 1.05rem; font-weight: 600; }
+@media (min-width: 56rem) {
+  .coaching { grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+}
+
 /* Visit */
 .visit { display: grid; gap: 2.5rem; }
 .lead { margin: -0.5rem 0 1.75rem; font-size: 1.15rem; }
